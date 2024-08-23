@@ -103,3 +103,15 @@
 #register--link:hover {
     color: #00E1D1;
 }
+
+#register--error--username {
+    position: absolute;
+    right: 17.9%;
+    width: 20vw;
+}
+#register--error--password {
+    position: absolute;
+    left: 62%;
+    top: 50%;
+    width: 20vw;
+}

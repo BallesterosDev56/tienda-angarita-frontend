@@ -7,6 +7,7 @@ export const Login = () => {
     //instancias:
     const navigate = useNavigate();
     const {register, handleSubmit, formState: {errors} } = useForm();
+    
 
     //functions:
     const manageClick = () => {
@@ -17,9 +18,19 @@ export const Login = () => {
             userName: data.username,
             userPassword: data.password
         }
-        console.log(userData);
         
-        await fetchLogin(userData)
+        let response = await fetchLogin(userData)
+        verifyUser(response.message)  
+    }
+
+    const verifyUser = (message)=> {
+        if(message === 'WRONG USER') {
+            alert('The user does not exist')
+        } else if(message === 'WRONG PASSWORD') {
+            alert('The password is incorrect')
+        } else if (message == 'SUCCESSFUL LOGIN') {
+            navigate('/tienda-angarita/home');
+        }
     }
 
 
@@ -43,7 +54,7 @@ export const Login = () => {
                             message: 'The maximum length is 20 characters!'
                         }
                     })} type="text" placeholder="Username" />
-                    <p className="has-text-danger-dark"></p>
+                    {errors.username && <p id="login--error--username" className="has-text-danger-dark">{errors.username.message}</p>}
                 </div>
 
                 <div className="login--password">
@@ -62,7 +73,7 @@ export const Login = () => {
                             message: 'The password requires at least one special character'
                         }
                     })} type="password" placeholder="Password" />
-                    <p className="has-text-danger-dark"></p>
+                    {errors.password && <p id="login--error--password" className="has-text-danger-dark">{errors.password.message}</p>}
                 </div>
 
                 <div className="login--button">

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./register.css";
 import { useForm } from "react-hook-form";
+import { fetchRegister } from "../../logic/fetchRegister";
 
 export const Register = () => {
     
@@ -12,8 +13,24 @@ export const Register = () => {
     const manageClick = () => {
         navigate('/tienda-angarita/login');
     }
+
     const onSubmit = async (data)=>{
-        console.log(data);
+        let userData = {
+            userName: data.username,
+            userPassword: data.password
+        }
+
+        let response = await fetchRegister(userData)
+        manageResponse(response.message);
+    }
+
+    const manageResponse = (message)=> {
+        if(message === 'SUCCESSFULLY CREATED USER') {
+            alert('The user has been created succesfully');
+            navigate('/tienda-angarita/login');
+        } else if(message === 'INTERNAL SERVER ERROR') {
+            alert('The username is already taken');
+        }
     }
 
 
@@ -29,7 +46,7 @@ export const Register = () => {
                     <input {...register("username", {
                         required: 'Username is required',
                         minLength: {
-                            vale: 5,
+                            value: 5,
                             message: 'The minimum length must be at least 5 characters!'
                         },
                         maxLength: {
@@ -37,12 +54,26 @@ export const Register = () => {
                             message: 'The maximum length is 20 characters!'
                         }
                     })} type="text" placeholder="Username" />
-                    <p className="has-text-danger-dark"></p>
+                    {errors.username && <p id="register--error--username" className="has-text-danger-dark">{errors.username.message}</p>}
                 </div>
 
                 <div className="register--password">
-                    <input {...register("password")} type="text" placeholder="Password" />
-                    <p className="has-text-danger-dark"></p>
+                    <input {...register("password", {
+                        required: 'Password is required',
+                        minLength: {
+                            value: 5,
+                            message: 'The minimum length must be at least 5 characters!'
+                        },
+                        maxLength: {
+                            value: 20,
+                            message: 'The maximum length is 20 characters!'
+                        },
+                        pattern: {
+                            value: /^(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?~\\/-]).*$/,
+                            message: 'The password requires at least one special character'
+                        }
+                    })} type="password" placeholder="Password" />
+                    {errors.password && <p id="register--error--password" className="has-text-danger-dark">{errors.password.message}</p>}
                 </div>
 
                 <div className="register--button">

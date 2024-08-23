@@ -40,6 +40,7 @@
 }
 
 .login--username {
+    position: relative;
     grid-area: username;
     display: flex;
     flex-direction: column;
@@ -103,4 +104,16 @@
 }
 #register--link:hover {
     color: #00E1D1;
+}
+
+#login--error--username {
+    position: absolute;
+    left: 85%;
+    width: 20vw;
+}
+#login--error--password {
+    position: absolute;
+    left: 62%;
+    top: 50%;
+    width: 20vw;
 }
