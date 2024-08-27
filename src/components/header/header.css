@@ -15,15 +15,9 @@ header {
 .header--image--container {
     display: flex;
     align-items: center;
-    width: 20vw;
-}
-.space--div {
-    width: 50%;
-}
-.logo--image{
-    width: 4rem;
+    width: 10vw;
 }
 .user--image {
     width: 2.3rem;
-    margin-left: 40%;
+    margin-left: 10%;
 }

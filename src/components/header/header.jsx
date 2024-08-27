@@ -10,9 +10,7 @@ export const Header = ()=> {
             <h1 className='is-size-2 has-text-weight-bold'>Tienda Angarita</h1>
             <div className="header--image--container">
                 <p className='is-size-5'>{user_data.user_name}</p>
-                <div><img className='user--image' src={userImage} /></div>
-                <div className="space--div"> </div>
-                <img className='logo--image' src={icon} />
+                <img className='user--image' src={userImage} />
             </div>
         </header>
     )
