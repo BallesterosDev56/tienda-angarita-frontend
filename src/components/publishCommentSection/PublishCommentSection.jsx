@@ -56,7 +56,7 @@ export const PublishCommentSection = ({productData, setStatusFetch}) => {
           ></textarea>
         </div>
         <div>
-          <button type="submit" className="button is-dark">
+          <button type="submit" className="button is-dark mt-4">
             Agregar comentario
           </button>
         </div>
