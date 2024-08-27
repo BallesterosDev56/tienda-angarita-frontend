@@ -43,37 +43,18 @@ export const Register = () => {
                 </div>
 
                 <div className="register--username">
-                    <input {...register("username", {
-                        required: 'Username is required',
-                        minLength: {
-                            value: 5,
-                            message: 'The minimum length must be at least 5 characters!'
-                        },
-                        maxLength: {
-                            value: 20,
-                            message: 'The maximum length is 20 characters!'
-                        }
-                    })} type="text" placeholder="Username" />
-                    {errors.username && <p id="register--error--username" className="has-text-danger-dark">{errors.username.message}</p>}
+                    <input title="user" {...register("username")} type="text" placeholder="Username" minLength={5} maxLength={20} required/>
+                    {errors.username && <p id="register--error--username" className="has-text-danger-dark is-size-5">{errors.username.message}</p>}
                 </div>
 
                 <div className="register--password">
                     <input {...register("password", {
-                        required: 'Password is required',
-                        minLength: {
-                            value: 5,
-                            message: 'The minimum length must be at least 5 characters!'
-                        },
-                        maxLength: {
-                            value: 20,
-                            message: 'The maximum length is 20 characters!'
-                        },
                         pattern: {
                             value: /^(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?~\\/-]).*$/,
                             message: 'The password requires at least one special character'
                         }
-                    })} type="password" placeholder="Password" />
-                    {errors.password && <p id="register--error--password" className="has-text-danger-dark">{errors.password.message}</p>}
+                    })} type="password" placeholder="Password" minLength={5} maxLength={20} required />
+                    {errors.password && <p id="register--error--password" className="has-text-danger-dark is-size-5">{errors.password.message}</p>}
                 </div>
 
                 <div className="register--button">

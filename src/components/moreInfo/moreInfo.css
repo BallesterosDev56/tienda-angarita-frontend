@@ -1,0 +1,53 @@
+.section--more--info {
+    width: 80vw;
+    margin: 3vw auto;
+    display: grid;
+    grid-template-areas: 
+    "image--section description--section"
+    "comments--section comments--section"
+    "publish--comments--section publish--comments--section"
+    ;
+    padding: 6%;
+    background-color: #FFFF;
+    border-radius: 1rem;
+}
+
+
+.image--section {
+    grid-area: image--section;
+    margin-bottom: 15%;
+}
+.image--section img {
+    border-radius: 0.6rem;
+    
+}
+
+
+.description--section {
+    grid-area: description--section;
+    padding: 5% 0 0 20%;
+    margin-bottom: 15%;
+}
+#buy--button {
+    margin-top: 13%;
+}
+
+
+.comments--section {
+    grid-area: comments--section;
+    margin-bottom: 6%;
+}
+
+
+
+
+.publish--comments--section {
+    grid-area: publish--comments--section;
+    padding: 0 2.5%;
+}
+.textarea--form {
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 2% 0 0 2%;
+    font-size: 1rem;
+}

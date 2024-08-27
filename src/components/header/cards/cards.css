@@ -1,0 +1,8 @@
+.section--cards--container {
+    width: 80vw;
+    display: grid;
+    grid-template-columns: repeat(3, 25%);
+    column-gap: 12.5%;
+    row-gap: 7%;
+    margin: 7vw auto;
+}

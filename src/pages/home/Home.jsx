@@ -1,9 +1,12 @@
+import { Cards } from '../../components/header/cards/Cards'
+import { Header } from '../../components/header/header'
 import './home.css'
 
 export const Home = ()=> {
     return(
         <>
-            <h1>HOLA ESTE ES EL HOME</h1>
+            <Header></Header>
+            <Cards></Cards>
         </>
     )
 }

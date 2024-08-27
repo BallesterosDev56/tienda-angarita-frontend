@@ -6,4 +6,9 @@ body {
   background-position: center; 
   background-repeat: no-repeat; 
   background-attachment: fixed;
+
+  font-family: "Poppins", Repo;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
 }
