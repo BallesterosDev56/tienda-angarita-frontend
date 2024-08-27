@@ -5,14 +5,24 @@ import { ImageSection } from "../imageSection/imageSection";
 import { DescriptionSection } from "../descriptionSection/DescriptionSection";
 import { CommentsSection } from "../commentsSection/CommentsSection";
 import { PublishCommentSection } from "../publishCommentSection/PublishCommentSection"
+import { useAuth } from '../../logic/authContext'
 
 export const MoreInfo = () => {
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const {login, logout, isAuthenticated} = useAuth();
   const params = useParams();
   let codifiedName = params.name_product.replaceAll(" ", "%20");
 
   useEffect(() => {
+    //verificar si esta logueado
+    
+        if(isAuthenticated) {
+            login();
+        } else {
+            logout();
+        }
+
     async function fetchProduct(codifiedName) {
       let response = await fetch(
         `http://localhost:3000/tienda-angarita/home/${codifiedName}`
@@ -35,7 +45,7 @@ export const MoreInfo = () => {
 
       });
 
-  }, [codifiedName]);
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>;

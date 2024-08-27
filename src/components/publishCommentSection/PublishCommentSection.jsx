@@ -4,7 +4,7 @@ export const PublishCommentSection = ({productData}) => {
   let codifiedName = productData.product_name.replaceAll(" ", "%20");
 
   //recuperamos los datos del usuario
-  const user_data = JSON.parse(localStorage.getItem('userData'));  
+  const user_data = JSON.parse(sessionStorage.getItem('userData'));  
   
   const {register, handleSubmit, reset} = useForm();
 

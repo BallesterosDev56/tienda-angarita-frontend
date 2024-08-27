@@ -7,7 +7,7 @@ import { useAuth } from '../../logic/authContext'; // Importamos el useAuth
 export const Login = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { login } = useAuth(); // Usamos el contexto de autenticación
+    let { login, isAuthenticated } = useAuth(); // Usamos el contexto de autenticación
 
     const manageClick = () => {
         navigate('/tienda-angarita/register');
@@ -21,9 +21,6 @@ export const Login = () => {
             }
     
             let response = await fetchLogin(userData)
-    
-            //guardamos en el local storage los datos del usuario:
-            localStorage.setItem('userData', JSON.stringify(response.user));
             verifyUser(response.message)
             
         } catch (error) {
@@ -39,9 +36,11 @@ export const Login = () => {
             alert('The password is incorrect')
         } else if (message === 'SUCCESSFUL LOGIN') {
             login(); // Establecemos el estado de autenticación
-            navigate('/tienda-angarita/home');
+            if(isAuthenticated) {
+                navigate('/tienda-angarita/home');
+            }
+        
         }
-        console.log(message);
         
     }
 

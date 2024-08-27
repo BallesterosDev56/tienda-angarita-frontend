@@ -1,6 +1,7 @@
 import './App.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from './logic/authContext'; // Importamos el AuthProvider
+import { useAuth } from './logic/authContext'
 
 //pages:
 import { Login } from './pages/login/Login';
@@ -9,6 +10,8 @@ import { Register } from './pages/register/Register';
 import { Home } from '../src/pages/home/Home';
 import { ProtectedRoute } from './logic/protectedRoute';
 import { MoreInfo } from './components/moreInfo/moreInfo';
+
+let {isAuthenticated} = useAuth;
 
 const Routes = createBrowserRouter([
   {
@@ -26,14 +29,17 @@ const Routes = createBrowserRouter([
   {
     path: '/tienda-angarita/home',
     element: (
-      <ProtectedRoute>
+      <ProtectedRoute isAuthenticated={isAuthenticated}>
         <Home />
       </ProtectedRoute>
     ),
   },
   {
     path: '/tienda-angarita/home/:name_product',
-    element: <MoreInfo></MoreInfo>
+    element: 
+    <ProtectedRoute isAuthenticated={isAuthenticated}>
+      <MoreInfo/>
+    </ProtectedRoute>
   }
 ]);
 
