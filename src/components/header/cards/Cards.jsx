@@ -20,9 +20,6 @@ export const Cards = () => {
   
   if(productsData.length > 1) {
     console.log('PRODUCTS FETCHED SUCCESFULLY');
-  } else{
-    console.error('AN ERROR OCURRED WHILE FETCHING THE PRODUCTS');
-    
   }
 
   return (

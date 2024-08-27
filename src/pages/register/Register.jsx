@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import "./register.css";
+import { userCreated, userAlreadyTaken } from "../../logic/sweetAlert";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { fetchRegister } from "../../logic/fetchRegister";
 
@@ -26,10 +27,10 @@ export const Register = () => {
 
     const manageResponse = (message)=> {
         if(message === 'SUCCESSFULLY CREATED USER') {
-            alert('The user has been created succesfully');
+            Swal.fire(userCreated);
             navigate('/tienda-angarita/login');
         } else if(message === 'INTERNAL SERVER ERROR') {
-            alert('The username is already taken');
+            Swal.fire(userAlreadyTaken);
         }
     }
 
@@ -44,17 +45,16 @@ export const Register = () => {
 
                 <div className="register--username">
                     <input title="user" {...register("username")} type="text" placeholder="Username" minLength={5} maxLength={20} required/>
-                    {errors.username && <p id="register--error--username" className="has-text-danger-dark is-size-5">{errors.username.message}</p>}
                 </div>
 
                 <div className="register--password">
                     <input {...register("password", {
                         pattern: {
                             value: /^(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?~\\/-]).*$/,
-                            message: 'The password requires at least one special character'
+                            message: 'Password requires one special character'
                         }
                     })} type="password" placeholder="Password" minLength={5} maxLength={20} required />
-                    {errors.password && <p id="register--error--password" className="has-text-danger-dark is-size-5">{errors.password.message}</p>}
+                    {errors.password && <p className="is-size-6 has-text-black mt-2">{errors.password.message}</p>}
                 </div>
 
                 <div className="register--button">

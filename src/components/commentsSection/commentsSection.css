@@ -1,0 +1,10 @@
+.li--comment {
+    position: relative;
+}
+
+.image--comment {
+    position: absolute;
+    width: 50px;
+    right: 4%;
+    bottom: 15%;
+}

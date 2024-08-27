@@ -8,7 +8,7 @@ export const DescriptionSection = ({ productData }) => {
         {productData.product_name}
       </h1>
       <p className="is-italic has-text-primary-00">{productData.product_description}</p>
-      <h3 className="has-text-black is-size-1 mt-6">${productData.product_price}</h3>
+      <h3 className="has-text-black is-size-1 mt-6"><strong className="has-text-black">$ </strong>{productData.product_price}</h3>
       <Link to={'/tienda-angarita/home'} id="buy--button" className="button is-dark is-medium">Continuar comprando 🔙</Link>
     </>
   );

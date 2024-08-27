@@ -1,32 +1,48 @@
 import { useForm } from "react-hook-form";
+import { messageSent, messageNotSent } from "../../logic/sweetAlert";
 
 export const PublishCommentSection = ({productData}) => {
   let codifiedName = productData.product_name.replaceAll(" ", "%20");
 
   //recuperamos los datos del usuario
-  const user_data = JSON.parse(sessionStorage.getItem('userData'));  
+  const user_data = JSON.parse(sessionStorage.getItem('userData'));
   
   const {register, handleSubmit, reset} = useForm();
 
   const onSubmit = async(userData)=> {
-    let response = await fetch(`http://localhost:3000/tienda-angarita/home/${codifiedName}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type':'application/json'
-        },
-        body: JSON.stringify({
-          text:userData.message,
-          userID: user_data.id,
-          productID: productData.id,
-        }),
+    try {
+      let response = await fetch(`http://localhost:3000/tienda-angarita/home/${codifiedName}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({
+            text:userData.message,
+            userID: user_data.id,
+            productID: productData.id,
+          }),
+        }
+  
+      );
+      let data = await response.json();
+      if (data.message === `SUCCESS COMMENT IN THE PRODUCT ${productData.product_name}`) {
+        Swal.fire(messageSent);
+        setTimeout(() => {
+          reset();
+          location.reload();
+        }, 3000);
+
+      } else {
+        Swal.fire(messageNotSent);
+        reset();
+
       }
-
-    );
-    let data = await response.json();
-    console.log(data);
-
-    reset();
+      
+    } catch (error) {
+        console.error(error);
+      
+    }
   }
 
   return (

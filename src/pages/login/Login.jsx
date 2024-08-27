@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import "./login.css";
+import { userNotFoundAlert, incorrectPassword } from "../../logic/sweetAlert";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { fetchLogin } from "../../logic/fetchLogin";
 import { useAuth } from '../../logic/authContext'; // Importamos el useAuth
@@ -21,22 +22,23 @@ export const Login = () => {
             }
     
             let response = await fetchLogin(userData)
-            verifyUser(response.message)
+            verifyUser(response.message, response.user)
             
         } catch (error) {
             console.log(error);
             
-        }  
+        }
     }
 
-    const verifyUser = (message) => {
+    const verifyUser = (message, user_data) => {
         if (message === 'USER NOT FOUND') {
-            alert('The user does not exist')
+            Swal.fire(userNotFoundAlert);
         } else if (message === 'WRONG PASSWORD') {
-            alert('The password is incorrect')
+            Swal.fire(incorrectPassword);
         } else if (message === 'SUCCESSFUL LOGIN') {
             login(); // Establecemos el estado de autenticación
             if(isAuthenticated) {
+                sessionStorage.setItem('userData', JSON.stringify(user_data));
                 navigate('/tienda-angarita/home');
             }
         
@@ -54,17 +56,16 @@ export const Login = () => {
 
                 <div className="login--username">
                     <input {...register("username")} type="text" placeholder="Username" minLength={5} maxLength={20} required />
-                    {errors.username && <p id="login--error--username" className="has-text-danger-dark is-size-5">{errors.username.message}</p>}
                 </div>
 
                 <div className="login--password">
                     <input {...register("password", {
                         pattern: {
                             value: /^(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?~\\/-]).*$/,
-                            message: 'The password requires at least one special character'
+                            message: 'Password requires one special character'
                         }
                     })} type="password" placeholder="Password" minLength={5} maxLength={20} required />
-                    {errors.password && <p id="login--error--password" className="has-text-danger is-size-5">{errors.password.message}</p>}
+                    {errors.password && <p className="is-size-6 has-text-black mt-2">{errors.password.message}</p>}
                 </div>
 
                 <div className="login--button">

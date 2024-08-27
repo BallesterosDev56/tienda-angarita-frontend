@@ -6,6 +6,7 @@ import { DescriptionSection } from "../descriptionSection/DescriptionSection";
 import { CommentsSection } from "../commentsSection/CommentsSection";
 import { PublishCommentSection } from "../publishCommentSection/PublishCommentSection"
 import { useAuth } from '../../logic/authContext'
+import { Header } from "../header/header";
 
 export const MoreInfo = () => {
   const [productData, setProductData] = useState(null);
@@ -56,25 +57,28 @@ export const MoreInfo = () => {
   return (
     <>
       {productData && productData.product ? (
-        <section className="section--more--info">
+        <>
+          <Header></Header>
+          <section className="section--more--info">
+            
+          <div className="image--section">
+              <ImageSection productData={productData.product}></ImageSection>           
+          </div>
+
+          <div className="description--section">
+              <DescriptionSection productData={productData.product}></DescriptionSection>            
+          </div>
           
-        <div className="image--section">
-            <ImageSection productData={productData.product}></ImageSection>           
-        </div>
+          <div className="comments--section">
+              <CommentsSection commentsData={productData.comments}></CommentsSection>         
+          </div>
 
-        <div className="description--section">
-            <DescriptionSection productData={productData.product}></DescriptionSection>            
-        </div>
-        
-        <div className="comments--section">
-            <CommentsSection commentsData={productData.comments}></CommentsSection>         
-        </div>
+          <div className="publish--comments--section">
+                <PublishCommentSection productData={productData.product}></PublishCommentSection>                
+          </div>
 
-        <div className="publish--comments--section">
-              <PublishCommentSection productData={productData.product}></PublishCommentSection>                
-        </div>
-
-        </section>
+          </section>
+        </>
       ) : (
         <p>Producto no encontrado</p>
       )}

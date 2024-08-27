@@ -7,7 +7,6 @@
 
 .form--container {
     width: 35vw;
-    height: 70%;
     border-radius: 10px;
     background-color: #719080bb;
     border: 1px solid #95B796;
@@ -104,14 +103,3 @@
     color: #00E1D1;
 }
 
-#register--error--username {
-    position: absolute;
-    right: 17.9%;
-    width: 20vw;
-}
-#register--error--password {
-    position: absolute;
-    left: 62%;
-    top: 50%;
-    width: 20vw;
-}
