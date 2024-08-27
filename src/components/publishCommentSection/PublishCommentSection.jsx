@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { messageSent, messageNotSent } from "../../logic/sweetAlert";
 
-export const PublishCommentSection = ({productData}) => {
+export const PublishCommentSection = ({productData, setStatusFetch}) => {
   let codifiedName = productData.product_name.replaceAll(" ", "%20");
 
   //recuperamos los datos del usuario
@@ -30,7 +30,7 @@ export const PublishCommentSection = ({productData}) => {
         Swal.fire(messageSent);
         setTimeout(() => {
           reset();
-          location.reload();
+          setStatusFetch((prev)=>!prev);
         }, 3000);
 
       } else {

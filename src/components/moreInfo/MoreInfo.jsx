@@ -9,6 +9,7 @@ import { useAuth } from '../../logic/authContext'
 import { Header } from "../header/header";
 
 export const MoreInfo = () => {
+  const [statusFetch, setStatusFetch] = useState(true);
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
   const {login, logout, isAuthenticated} = useAuth();
@@ -46,7 +47,7 @@ export const MoreInfo = () => {
 
       });
 
-  }, []);
+  }, [statusFetch]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -74,7 +75,7 @@ export const MoreInfo = () => {
           </div>
 
           <div className="publish--comments--section">
-                <PublishCommentSection productData={productData.product}></PublishCommentSection>                
+                <PublishCommentSection productData={productData.product} setStatusFetch={setStatusFetch}></PublishCommentSection>                
           </div>
 
           </section>
