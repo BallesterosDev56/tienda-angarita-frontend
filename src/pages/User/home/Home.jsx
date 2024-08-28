@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { Cards } from '../../components/header/cards/Cards'
-import { Header } from '../../components/header/header'
+import { Cards } from '../../../components/header/cards/Cards'
+import { Header } from '../../../components/header/header'
 import './home.css'
-import { useAuth } from '../../logic/authContext'
+import { useAuth } from '../../../logic/authContext'
 
 
 export const Home = ()=> {

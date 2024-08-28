@@ -1,9 +1,9 @@
 import "./login.css";
-import { userNotFoundAlert, incorrectPassword } from "../../logic/sweetAlert";
+import { userNotFoundAlert, incorrectPassword } from "../../../logic/sweetAlert";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { fetchLogin } from "../../logic/fetchLogin";
-import { useAuth } from '../../logic/authContext'; // Importamos el useAuth
+import { fetchLogin } from "../../../logic/fetchLogin";
+import { useAuth } from '../../../logic/authContext'; // Importamos el useAuth
 
 export const Login = () => {
     const navigate = useNavigate();

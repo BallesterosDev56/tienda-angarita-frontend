@@ -1,8 +1,8 @@
 import "./register.css";
-import { userCreated, userAlreadyTaken } from "../../logic/sweetAlert";
+import { userCreated, userAlreadyTaken } from "../../../logic/sweetAlert";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { fetchRegister } from "../../logic/fetchRegister";
+import { fetchRegister } from "../../../logic/fetchRegister";
 
 export const Register = () => {
     
