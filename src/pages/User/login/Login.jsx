@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { fetchLogin } from "../../../logic/fetchLogin";
 import { useAuth } from '../../../logic/authContext'; // Importamos el useAuth
+import { useAdmin } from "../../../logic/adminContext";
 
 export const Login = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    let { login, isAuthenticated } = useAuth(); // Usamos el contexto de autenticación
+    const { login, isAuthenticated } = useAuth(); // Usamos el contexto de autenticación
+    const { isAdmin, isNotAdmin} = useAdmin();
 
     const manageClick = () => {
         navigate('/tienda-angarita/register');
@@ -18,9 +20,9 @@ export const Login = () => {
         try {
             let userData = {
                 userName: data.username,
-                userPassword: data.password
+                userPassword: data.password,
+
             }
-    
             let response = await fetchLogin(userData)
             verifyUser(response.message, response.user)
             
@@ -31,17 +33,30 @@ export const Login = () => {
     }
 
     const verifyUser = (message, user_data) => {
+
         if (message === 'USER NOT FOUND') {
             Swal.fire(userNotFoundAlert);
         } else if (message === 'WRONG PASSWORD') {
             Swal.fire(incorrectPassword);
-        } else if (message === 'SUCCESSFUL LOGIN') {
+        } else if (message === 'SUCCESSFUL LOGIN') {            
             login(); // Establecemos el estado de autenticación
+            
             if(isAuthenticated) {
                 sessionStorage.setItem('userData', JSON.stringify(user_data));
                 navigate('/tienda-angarita/home');
+
             }
-        
+        } else if (message === 'SUCCESSFUL ADMIN LOGIN') {
+            login(); // Establecemos el estado de autenticación
+            if(isAuthenticated) {
+                sessionStorage.setItem('userData', JSON.stringify(user_data));
+                if(user_data.user_type === 'Admin') {
+                    isAdmin();
+                    navigate('/tienda-angarita/home');
+                } else {
+                    isNotAdmin();
+                }
+            }
         }
         
     }

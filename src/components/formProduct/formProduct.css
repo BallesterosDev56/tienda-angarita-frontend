@@ -1,0 +1,43 @@
+.section--product {
+    width: 60vw;
+    background-color: #FFFF;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+    align-items: center;
+}
+
+#form--product {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.section--product > .title--product {
+    display: flex;
+    flex-direction: column;
+    
+}
+.section--product > .title--product img{
+    width: 30px;
+    margin: 0 auto;
+}
+
+.section--product > .form--container {
+    width: 90%;
+    background-color: #FFF4F1;
+    border-radius: 5px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 2%;
+}
+
+.category--product > .categories {
+    display: flex;
+    justify-content: space-around;
+}
+
+.radio-container {
+    font-size: 0.8rem;
+}

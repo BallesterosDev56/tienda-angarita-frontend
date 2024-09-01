@@ -25,3 +25,7 @@ export const messageNotSent = {
     icon: "error",
     title: "Error while sending the message",
 }
+export const welcomeAdmin = {
+    icon: "success",
+    title: "Welcome back Admin 😀",
+}

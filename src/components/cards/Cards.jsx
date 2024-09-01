@@ -1,6 +1,6 @@
-import { Card } from "../card/card";
 import "./cards.css";
-import { fetchProducts } from '../../../logic/fetchProducts'
+import { Card } from '../../components/card/Card'
+import { fetchProducts } from '../../logic/fetchProducts'
 import { useEffect, useState } from 'react'
 
 

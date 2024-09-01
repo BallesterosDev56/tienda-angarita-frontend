@@ -1,5 +1,4 @@
 import './header.css'
-import icon from '../../assets/images/logo.png'
 import userImage from '../../assets/images/user.png'
 
 export const Header = ()=> {
@@ -7,10 +6,11 @@ export const Header = ()=> {
     
     return(
         <header>
-            <h1 className='is-size-2 has-text-weight-bold'>Tienda Angarita</h1>
+            <h1 className='is-size-2 has-text-weight-bold'>Angarita's Store</h1>
             <div className="header--image--container">
-                <p className='is-size-5'>{user_data.user_name}</p>
                 <img className='user--image' src={userImage} />
+                {/* {user_data && <p className='is-size-5'>{user_data.user_name}</p>} */}
+                <p className='is-size-5'>{user_data.user_name}</p>
             </div>
         </header>
     )
