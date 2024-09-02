@@ -9,8 +9,7 @@ export const Header = ()=> {
             <h1 className='is-size-2 has-text-weight-bold'>Angarita's Store</h1>
             <div className="header--image--container">
                 <img className='user--image' src={userImage} />
-                {/* {user_data && <p className='is-size-5'>{user_data.user_name}</p>} */}
-                <p className='is-size-5'>{user_data.user_name}</p>
+                {user_data && <p className='is-size-5'>{user_data.user_name}</p>}
             </div>
         </header>
     )

@@ -16,7 +16,6 @@ import { NewProduct } from './pages/Admin/newProduct/NewProduct';
 import { AdminProvider } from './logic/adminContext';
 import { ProtectedAdmin } from './logic/protectedAdmin';
 //import NotFoundPage from './pages/notFoundPage/NotFoundPage';
-//import { LoginAdmin } from './pages/Admin/login/LoginAdmin';
 
 
 const Routes = createBrowserRouter([

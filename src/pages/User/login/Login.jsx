@@ -40,23 +40,22 @@ export const Login = () => {
             Swal.fire(incorrectPassword);
         } else if (message === 'SUCCESSFUL LOGIN') {            
             login(); // Establecemos el estado de autenticación
+            isNotAdmin();//Establecemos el estado de no admin
             
-            if(isAuthenticated) {
-                sessionStorage.setItem('userData', JSON.stringify(user_data));
-                navigate('/tienda-angarita/home');
+            sessionStorage.setItem('userData', JSON.stringify(user_data)); //guardamos los datos del usuario
+            navigate('/tienda-angarita/home');
 
-            }
         } else if (message === 'SUCCESSFUL ADMIN LOGIN') {
             login(); // Establecemos el estado de autenticación
-            if(isAuthenticated) {
-                sessionStorage.setItem('userData', JSON.stringify(user_data));
-                if(user_data.user_type === 'Admin') {
-                    isAdmin();
-                    navigate('/tienda-angarita/home');
-                } else {
-                    isNotAdmin();
-                }
+            sessionStorage.setItem('userData', JSON.stringify(user_data)); //guardamos los datos del usuario
+
+            if(user_data.user_type === 'Admin') {
+                isAdmin(); // Establecemos el estado de administrador
+                navigate('/tienda-angarita/home');
+            } else {
+                isNotAdmin(); //Establecemos el estado de no administrador
             }
+
         }
         
     }

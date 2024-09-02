@@ -19,7 +19,7 @@ export const Card = ({props})=> {
                 <h2>{product_name}</h2>
                 <p>{product_description}</p>
                 <div className="price">${product_price}</div>
-                <Link to={`/tienda-angarita/home/${product_name}`} id='card--button' className='button is-link'>Más información</Link>
+                <Link to={`/tienda-angarita/home/${product_name}`} id='card--button' className='button is-primary'>Más información</Link>
             </div>
         </>
     )

@@ -1,6 +1,6 @@
 .section--product {
     width: 60vw;
-    background-color: #FFFF;
+    background-color: #fFFF;
     margin: 0 auto;
     text-align: center;
     border-radius: 10px;
@@ -24,7 +24,7 @@
 
 .section--product > .form--container {
     width: 90%;
-    background-color: #FFF4F1;
+    background-color: #fFF4F1;
     border-radius: 5px;
     margin: 0 auto;
     display: flex;

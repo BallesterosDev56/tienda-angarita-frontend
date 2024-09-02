@@ -17,13 +17,6 @@ export const MoreInfo = () => {
   let codifiedName = params.name_product.replaceAll(" ", "%20");
 
   useEffect(() => {
-    //verificar si esta logueado
-    
-        if(isAuthenticated) {
-            login();
-        } else {
-            logout();
-        }
 
     async function fetchProduct(codifiedName) {
       let response = await fetch(
