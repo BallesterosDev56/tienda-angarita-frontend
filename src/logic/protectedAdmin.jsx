@@ -1,10 +1,9 @@
 import NotFoundPage from "../pages/notFoundPage/NotFoundPage";
-import { useAdmin } from "./adminContext";
 
 export const ProtectedAdmin =  ({children})=>{
-    const {adminState} = useAdmin(); 
+    const adminState = sessionStorage.getItem('adminState');
     
-    if(!adminState) {
+    if(adminState === 'false') {
         return(
             <NotFoundPage></NotFoundPage>
         )

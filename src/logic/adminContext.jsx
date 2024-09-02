@@ -1,17 +1,31 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 
 //creamos el contexto global:
 const adminContext = createContext();
 
 //creamos el provider
 export const AdminProvider = ({children})=> {
-    let [adminState, setAdminState] = useState(false);
 
-    const isAdmin = () => setAdminState(true);
-    const isNotAdmin = () => setAdminState(false);
+    const isAdmin = () => {
+        let existItem = sessionStorage.getItem('adminState');
+    
+        if (existItem !== null) {
+          sessionStorage.removeItem('adminState');
+        }
+        sessionStorage.setItem('adminState', 'true');
+      }
+
+      const isNotAdmin = () => {
+        let existItem = sessionStorage.getItem('adminState');
+    
+        if (existItem !== null) {
+          sessionStorage.removeItem('adminState');
+        }
+        sessionStorage.setItem('adminState', 'false');
+      }
 
     return(
-            <adminContext.Provider value={{adminState, isAdmin, isNotAdmin}}>
+            <adminContext.Provider value={{isAdmin, isNotAdmin}}>
                 {children}
             </adminContext.Provider>
     )

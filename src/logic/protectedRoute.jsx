@@ -1,12 +1,11 @@
 // ProtectedRoute.jsx
-import { useAuth } from './authContext';
 import { Navigate } from 'react-router-dom';
 
 export const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useAuth();
+  const isAuthenticated = sessionStorage.getItem('userState');
   
 
-  if (!isAuthenticated) {
+  if (isAuthenticated === false || isAuthenticated === null) {
     return <Navigate to="/tienda-angarita/login" />;
   }
 

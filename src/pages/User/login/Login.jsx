@@ -9,7 +9,7 @@ import { useAdmin } from "../../../logic/adminContext";
 export const Login = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { login, isAuthenticated } = useAuth(); // Usamos el contexto de autenticación
+    const { login } = useAuth(); // Usamos el contexto de autenticación
     const { isAdmin, isNotAdmin} = useAdmin();
 
     const manageClick = () => {
@@ -36,23 +36,27 @@ export const Login = () => {
 
         if (message === 'USER NOT FOUND') {
             Swal.fire(userNotFoundAlert);
-        } else if (message === 'WRONG PASSWORD') {
+        }
+        else if (message === 'WRONG PASSWORD') {
             Swal.fire(incorrectPassword);
-        } else if (message === 'SUCCESSFUL LOGIN') {            
+        }
+        else if (message === 'SUCCESSFUL LOGIN') {            
             login(); // Establecemos el estado de autenticación
-            isNotAdmin();//Establecemos el estado de no admin
+            isNotAdmin();//Establecemos el estado de no admin            
             
             sessionStorage.setItem('userData', JSON.stringify(user_data)); //guardamos los datos del usuario
             navigate('/tienda-angarita/home');
 
-        } else if (message === 'SUCCESSFUL ADMIN LOGIN') {
+        }
+        else if (message === 'SUCCESSFUL ADMIN LOGIN') {
             login(); // Establecemos el estado de autenticación
             sessionStorage.setItem('userData', JSON.stringify(user_data)); //guardamos los datos del usuario
 
             if(user_data.user_type === 'Admin') {
                 isAdmin(); // Establecemos el estado de administrador
                 navigate('/tienda-angarita/home');
-            } else {
+            }
+            else {
                 isNotAdmin(); //Establecemos el estado de no administrador
             }
 
