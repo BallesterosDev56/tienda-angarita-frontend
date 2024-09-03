@@ -5,14 +5,12 @@ import { ImageSection } from "../imageSection/imageSection";
 import { DescriptionSection } from "../descriptionSection/DescriptionSection";
 import { CommentsSection } from "../commentsSection/CommentsSection";
 import { PublishCommentSection } from "../publishCommentSection/PublishCommentSection"
-import { useAuth } from '../../logic/authContext'
 import { Header } from "../header/header";
 
 export const MoreInfo = () => {
   const [statusFetch, setStatusFetch] = useState(true);
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const {login, logout, isAuthenticated} = useAuth();
   const params = useParams();
   let codifiedName = params.name_product.replaceAll(" ", "%20");
 

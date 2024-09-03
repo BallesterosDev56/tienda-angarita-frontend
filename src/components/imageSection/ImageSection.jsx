@@ -7,7 +7,7 @@ export const ImageSection = ({productData}) => {
       <figure className="flex">
         <img
           className="section--image"
-          src={`data:image/jpeg;base64,${product_photo}`}
+          src={product_photo}
           alt={`${productData.product_name} - Imagen 1`}
         />
       </figure>

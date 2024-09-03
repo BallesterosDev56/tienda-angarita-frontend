@@ -6,11 +6,8 @@ import { Tab } from '../../../components/tab/Tab'
 
 export const Home = ()=> {
     const adminState = sessionStorage.getItem('adminState');
-    console.log(adminState);
-    
   
     if(adminState === 'true') {
-        console.log('into');
         
         return(
             <>

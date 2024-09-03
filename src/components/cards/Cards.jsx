@@ -18,7 +18,9 @@ export const Cards = () => {
       });
   }, []);
   
+  
   if(productsData.length > 1) {
+    
     console.log('PRODUCTS FETCHED SUCCESFULLY');
   }
 
