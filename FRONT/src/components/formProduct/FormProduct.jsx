@@ -1,7 +1,7 @@
 import './formProduct.css'
 import stock from '../../assets/images/stock.png'
 import { useForm } from 'react-hook-form'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { FetchNewProduct } from '../../logic/fetchNewProduct'
 
 export const FormProduct = ()=> {

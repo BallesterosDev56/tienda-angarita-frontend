@@ -59,7 +59,6 @@ export const Login = () => {
             else {
                 isNotAdmin(); //Establecemos el estado de no administrador
             }
-
         }
         
     }

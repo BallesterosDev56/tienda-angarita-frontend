@@ -9,6 +9,8 @@ try {
     })
 
     let data = await response.json();
+    console.log(data.token)
+
     return data;
 
 } catch (error) {
